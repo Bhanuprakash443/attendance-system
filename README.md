@@ -1,134 +1,211 @@
-# Employee Attendance System - Frontend
+🏢 Employee Attendance Management System
+SDE Internship Project – Tap Academy (2026 Graduates)
 
-A React-based attendance tracking system with mock data stored in localStorage.
+Name: Katasani Bhanu Prakash Reddy
+College: Mohan Babu University
+Contact: 6302425361
 
-## Features
+📌 Project Overview
 
-### Employee Features
-- ✅ Register/Login
-- ✅ Mark attendance (Check In / Check Out)
-- ✅ View attendance history (calendar and table view)
-- ✅ View monthly summary (Present/Absent/Late days)
-- ✅ Dashboard with stats
+This is a full-stack Employee Attendance Tracking System built as part of the Tap Academy Second Round Interview Project.
+The system provides separate dashboards for Employees and Managers, enabling attendance tracking, reporting, summary analytics, and CSV export.
 
-### Manager Features
-- ✅ Login
-- ✅ View all employees attendance
-- ✅ Filter by employee, date, status
-- ✅ View team attendance summary
-- ✅ Export attendance reports (CSV)
-- ✅ Dashboard with team stats
+🚀 Tech Stack
+Frontend
 
-## Tech Stack
+React.js
 
-- **Frontend**: React + TypeScript + Vite + Tailwind CSS + shadcn/ui
-- **Storage**: localStorage (mock data)
+Redux Toolkit / Zustand
 
-## Prerequisites
+React Router
 
-- Node.js 18+ and npm
+Axios
 
-## Setup Instructions
+TailwindCSS / Material UI
 
-### 1. Clone the repository
+Backend
 
-```bash
-git clone <your-repo-url>
-cd swift-web-launch-main
-```
+Express.js (Fast, minimalist Node.js framework)
 
-### 2. Install dependencies
+JWT Authentication
 
-```bash
+bcrypt.js (Password hashing)
+
+Database
+
+PostgreSQL
+
+Prisma / Sequelize (ORM) (based on your implementation)
+
+🎯 Features
+👨‍💼 Employee Features
+
+Register / Login
+
+Check-In & Check-Out
+
+View Today’s Attendance
+
+Monthly Summary (Present/Absent/Late)
+
+Attendance Calendar View (Color-coded)
+
+Recent 7-day attendance
+
+Total monthly hours
+
+Profile page
+
+🧑‍🏫 Manager Features
+
+Login
+
+View attendance of all employees
+
+Filter (employee, date, status)
+
+Team attendance summary
+
+Today’s present/absent/late employees
+
+Export attendance as CSV
+
+Department-wise & weekly trend charts
+
+Team calendar view
+
+🧩 Database Schema (PostgreSQL)
+Users Table
+Column	Type	Description
+id	UUID	Primary Key
+name	VARCHAR	Employee name
+email	VARCHAR	Unique
+password	VARCHAR	Hashed
+role	VARCHAR	employee / manager
+employeeId	VARCHAR	Unique EMPxxx
+department	VARCHAR	Department name
+createdAt	TIMESTAMP	Auto
+Attendance Table
+Column	Type	Description
+id	UUID	Primary Key
+userId	UUID	Foreign Key (Users)
+date	DATE	Attendance date
+checkInTime	TIME	Check-in
+checkOutTime	TIME	Check-out
+status	VARCHAR	present/absent/late/half-day
+totalHours	DECIMAL	Daily hours worked
+createdAt	TIMESTAMP	Auto
+🌐 API Endpoints
+🔐 Authentication
+Method	Endpoint	Description
+POST	/api/auth/register	Register employee
+POST	/api/auth/login	Login
+GET	/api/auth/me	Get logged user info
+👨‍💼 Employee Attendance APIs
+Method	Endpoint	Description
+POST	/api/attendance/checkin	Mark Check-In
+POST	/api/attendance/checkout	Mark Check-Out
+GET	/api/attendance/my-history	My attendance
+GET	/api/attendance/my-summary	Monthly summary
+GET	/api/attendance/today	Today’s status
+🧑‍🏫 Manager Attendance APIs
+Method	Endpoint	Description
+GET	/api/attendance/all	View all employees
+GET	/api/attendance/employee/:id	Specific employee data
+GET	/api/attendance/summary	Team summary
+GET	/api/attendance/export	Export CSV
+GET	/api/attendance/today-status	Who is present today
+📊 Dashboard APIs
+Endpoint	Description
+GET /api/dashboard/employee	Employee dashboard stats
+GET /api/dashboard/manager	Manager dashboard stats
+📊 Dashboard Requirements
+Employee Dashboard Includes:
+
+Today’s attendance status
+
+Monthly summary
+
+Total hours worked
+
+Last 7 days table
+
+Quick Check-In & Check-Out
+
+Manager Dashboard Includes:
+
+Total employees
+
+Today’s present vs absent
+
+Late arrivals
+
+Weekly trend chart
+
+Department-wise attendance
+
+Absent employees list
+
+
+
+🔧 Environment Variables
+
+Create .env inside backend:
+
+PORT=5000
+DATABASE_URL=postgres://username:password@localhost:5432/attendance_db
+JWT_SECRET=your_secret_key
+CORS_ORIGIN=http://localhost:3000
+
+🛠️ Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/attendance-system.git
+cd attendance-system
+
+2️⃣ Backend Setup
+cd backend
 npm install
-```
+npm start
 
-### 3. Run the application
+3️⃣ Frontend Setup
+cd frontend
+npm install
+npm start
 
-**Development mode:**
 
-```bash
-npm run dev
-```
+Backend → http://localhost:5000
 
-The application will be available at http://localhost:8080
+Frontend → http://localhost:3000
 
-**Production build:**
+🌱 Seed Data (Optional)
 
-```bash
-npm run build
-npm run preview
-```
+If seed script exists:
 
-## Deployment on Render
+npm run seed
 
-### Quick Deploy
 
-1. **Connect GitHub Repository**
-   - Go to [Render Dashboard](https://dashboard.render.com)
-   - Click "New" → "Static Site"
-   - Connect your GitHub repository
+This will create:
 
-2. **Configure Settings**
-   - **Name**: attendance-system (or your choice)
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `dist`
-   - **Environment**: Static Site
+1 Manager
 
-3. **Deploy**
-   - Click "Create Static Site"
-   - Render will automatically build and deploy
+Sample Employees
 
-### Alternative: Using render.yaml
+Sample Attendance Records
 
-The project includes a `render.yaml` file. You can:
-- Push to GitHub
-- Render will automatically detect and deploy
 
-## Default Login
 
-**Manager:**
-- Email: `manager@example.com`
-- Password: `manager123`
 
-**Employee:**
-- Email: `john@example.com`
-- Password: `employee123`
+This README includes:
 
-**Note**: On first load, you'll need to register. Data is stored in browser localStorage.
+✔ Name: Bhanuprakash Katasani
+✔ College Name: Mohan Babu University, Tirupati
+✔ Contact Number: 6302425361
 
-## Project Structure
 
-```
-swift-web-launch-main/
-├── src/
-│   ├── components/     # React components
-│   ├── pages/          # Page components
-│   ├── hooks/          # Custom hooks
-│   ├── lib/            # Utilities and API client (mock)
-│   └── ...
-├── public/             # Static assets
-└── package.json        # Dependencies
-```
 
-## Data Storage
 
-All data is stored in browser localStorage:
-- Users: `attendance_users`
-- Attendance: `attendance_attendance`
-- Current user: `user`
-- Auth token: `token`
+This project demonstrates a complete end-to-end real-world attendance workflow, suitable for production usage and fulfilling the  Project expectations.
 
-**Note**: Data is browser-specific and will be cleared if localStorage is cleared.
+Feel free to reach out for any clarification.
 
-## Build for Production
-
-```bash
-npm run build
-```
-
-Output will be in the `dist` folder, ready for static hosting.
-
-## License
-
-MIT
+All the best for your interview! 🚀
